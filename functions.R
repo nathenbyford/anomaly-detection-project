@@ -10,6 +10,8 @@ lm_inf_detection <- function(data) {
   
   train_anomaly <- pull(data, anomaly)
   
+  n_anom <- sum(train_anomaly)
+  
   lm_mod <- lm(value ~ timestamp, data)
   
   inf_point <- as.data.frame(influence.measures(lm_mod)$is.inf)
@@ -35,9 +37,12 @@ lm_inf_detection <- function(data) {
   mod_anom <- anom_points |> 
     pull(anomaly_mod)
   
+  mat <- table(mod_anom, train_anomaly)
+  
   list(AUC = AUC(mod_anom, train_anomaly),
-       conf_matrix = table(mod_anom, train_anomaly),
-       data = anom_points)
+       conf_matrix = mat,
+       data = anom_points,
+       true_pos = mat[2, 2] / n_anom)
 }
 
 
@@ -46,6 +51,8 @@ stl_detection <- function(data) {
   ## identify anomalies. This is done with help from the timetk package.
   
   train_anomaly <- pull(data, anomaly)
+  
+  n_anom <- sum(train_anomaly)
   
   mod_anomalies <- data |> 
     anomalize(timestamp, value) |> 
@@ -58,9 +65,12 @@ stl_detection <- function(data) {
   
   model_anomaly <- pull(mod_anomalies, anomaly_model)
   
+  mat <- table(model_anomaly, train_anomaly)
+  
   list(AUC = AUC(model_anomaly, train_anomaly),
-       conf_matrix = table(model_anomaly, train_anomaly),
-       data = anomaly_results)
+       conf_matrix = mat,
+       data = anomaly_results,
+       true_pos = mat[2, 2] / n_anom)
 }
 
 iso_forest_detection <- function(data) {
@@ -93,7 +103,7 @@ iso_forest_detection <- function(data) {
   )
   pred_fcf <- predict(model_fcf, data_without_anomaly)
   
-  results_df <- tibble(
+  tibble(
     "Isolation Forest" = AUC(pred_orig, train_anomaly),
     "Density Isolation Forest" = AUC(pred_dens, train_anomaly),
     "Fair-Cut Forest" = AUC(pred_fcf, train_anomaly)

@@ -12,14 +12,20 @@ data <- read_csv("data/combined_data.csv")
 
 glimpse(data)
 
-apple <- data |> filter(company == names[1])
+apple <- data |> filter(company == "AAPL")
 
 names <- as.character(unique(data$company))
 
-lm_results <- map_dfr(names,
+lm_auc <- map_dfr(names,
   ~tibble(
     company = .,
     lm = lm_inf_detection(filter(data, company == .))$AUC,
+    )
+  )
+lm_tprate <- map_dfr(names,
+  ~tibble(
+    company = .,
+    lm = lm_inf_detection(filter(data, company == .))$true_pos,
     )
   )
 
@@ -29,6 +35,13 @@ stl_results <- map_dfr(
   ~tibble(
     company = .,
     stl = stl_detection(filter(data, company == .))$AUC
+  )
+)
+stl_tprate <- map_dfr(
+  names,
+  ~tibble(
+    company = .,
+    stl = stl_detection(filter(data, company == .))$true_pos
   )
 )
 
