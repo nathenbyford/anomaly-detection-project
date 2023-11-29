@@ -74,8 +74,13 @@ stl_detection <- function(data) {
 }
 
 iso_forest_detection <- function(data) {
-  train_anomaly <- pull(data, anomaly)
-  data_without_anomaly <- select(data, -c(anomaly, company))
+  train <- data |> slice_head(n = ceiling(.5 * nrow(data)))
+  test <- data |> slice_tail(n = floor(.5 * nrow(data)))
+  
+  train_anomaly <- pull(train, anomaly)
+  test_anomaly <- pull(test, anomaly)
+  n_test_anom <- sum(test_anomaly)
+  data_without_anomaly <- select(train, -c(anomaly, company))
   
   iso_mod <- isolation.forest(
     data_without_anomaly,
@@ -84,6 +89,10 @@ iso_forest_detection <- function(data) {
     missing_action="fail"
   )
   pred_orig <- predict(iso_mod, data_without_anomaly)
+  pred_orig_test <- predict(iso_mod, select(test, -c(anomaly, company))) >= 0.8
+  pred_orig_mat <- table(pred_orig_test, test_anomaly)
+  pred_orig_tp <- ifelse(ncol(pred_orig_mat) == 2 && nrow(pred_orig_mat) == 2
+                         , pred_orig_mat[2, 2] / n_test_anom, 0)
   
   model_dens <- isolation.forest(
     data_without_anomaly,
@@ -93,6 +102,10 @@ iso_forest_detection <- function(data) {
     scoring_metric="density"
   )
   pred_dens <- predict(model_dens, data_without_anomaly)
+  pred_dens_test <- predict(model_dens, select(test, -c(anomaly, company))) >= 0.8
+  pred_dens_mat <- table(pred_dens_test, test_anomaly)
+  pred_dens_tp <- ifelse(ncol(pred_dens_mat) == 2 && nrow(pred_dens_mat) == 2
+                         , pred_dens_mat[2, 2] / n_test_anom, 0)
   
   model_fcf <- isolation.forest(
     data_without_anomaly,
@@ -102,10 +115,57 @@ iso_forest_detection <- function(data) {
     missing_action="fail"
   )
   pred_fcf <- predict(model_fcf, data_without_anomaly)
+  pred_fcf_test <- predict(model_fcf, select(test, -c(anomaly, company))) >= 0.8
+  pred_fcf_mat <- table(pred_fcf_test, test_anomaly)
+  pred_fcf_tp <- ifelse(ncol(pred_fcf_mat) == 2 && nrow(pred_fcf_mat) == 2,
+                        pred_fcf_mat[2, 2] / n_test_anom, 0)
   
-  tibble(
-    "Isolation Forest" = AUC(pred_orig, train_anomaly),
-    "Density Isolation Forest" = AUC(pred_dens, train_anomaly),
-    "Fair-Cut Forest" = AUC(pred_fcf, train_anomaly)
+  list(
+    train = tibble(
+      "Isolation Forest" = AUC(pred_orig, train_anomaly),
+      "Density Isolation Forest" = AUC(pred_dens, train_anomaly),
+      "Fair-Cut Forest" = AUC(pred_fcf, train_anomaly)
+    ),
+    test = tibble(
+      "Isolation Forest" = AUC(pred_orig_test, test_anomaly),
+      "Density Isolation Forest" = AUC(pred_dens_test, test_anomaly),
+      "Fair-Cut Forest" = AUC(pred_fcf_test, test_anomaly)
+    ),
+    true_pos = tibble(
+      "Isolation Forest" = pred_orig_tp,
+      "Density Isolation Forest" = pred_dens_tp,
+      "Fair-Cut Forest" = pred_fcf_tp
+    )
+  )
+}
+
+nn_detection <- function(data) {
+  train <- data |> slice_head(n = ceiling(.5 * nrow(apple)))
+  n_train_anom <- sum(pull(train, anomaly))
+  
+  test <- data |> slice_tail(n = floor(.5 * nrow(apple)))
+  n_test_anom <- sum(pull(test, anomaly))
+  
+  train_anomaly <- train |> pull(anomaly)
+  data_without_anomaly <- select(train, -c(anomaly, company)) |> 
+    mutate(timestamp = as.numeric(timestamp))
+  
+  nn_mod <- neuralnetwork(data_without_anomaly, train_anomaly, hidden.layers = 1)
+  
+  test_without_anomaly <- select(test, -c(anomaly, company)) |> 
+    mutate(timestamp = as.numeric(timestamp))
+  
+  train_pred <- predict(nn_mod, data_without_anomaly)$prediction
+  
+  test_pred <- predict(nn_mod, test_without_anomaly)$prediction
+
+  test_mat <- table(test$anomaly, test_pred)
+  
+  true_pos <- ifelse(ncol(test_mat) == 2, test_mat[2, 2] / n_test_anom, 0.0)
+  
+  list(
+    AUC = AUC(test_pred, test$anomaly),
+    conf_mat = test_mat,
+    true_pos = true_pos
   )
 }
