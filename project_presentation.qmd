@@ -53,6 +53,13 @@ data |> ggplot(aes(x = timestamp, y = value)) +
 
 ## Linear regression
 
+- Post hoc method
+- Utilize linear regression leverage measures to identify anomalies/levereage points.
+    + Cook's Distance
+    + Covariance ratios
+    + DF beta
+- Declare point as anomalous if it has high leverage.
+
 ## STL
 
 ## Neural Network

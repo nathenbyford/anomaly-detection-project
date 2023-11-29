@@ -8,11 +8,13 @@ lm_inf_detection <- function(data) {
   ## influence from on or all of the measures Cook's distance, Covariance ratio*, dffit*,
   ## df betas, and/or hat values.
   
-  train_anomaly <- pull(data, anomaly)
+  train <- slice_tail(data, n = floor(.5 * nrow(data)))
+  
+  train_anomaly <- pull(train, anomaly)
   
   n_anom <- sum(train_anomaly)
   
-  lm_mod <- lm(value ~ timestamp, data)
+  lm_mod <- lm(value ~ timestamp, train)
   
   inf_point <- as.data.frame(influence.measures(lm_mod)$is.inf)
   
@@ -25,9 +27,9 @@ lm_inf_detection <- function(data) {
     pull(n)
   
   anom_points <- left_join(
-    data[, c(1, 2, 4)], 
+    train[, c(1, 2, 4)], 
     tibble(
-      timestamp = data$timestamp[anom_ind], 
+      timestamp = train$timestamp[anom_ind], 
       anomaly_mod = TRUE
       ), 
     by = join_by(timestamp)
@@ -41,7 +43,6 @@ lm_inf_detection <- function(data) {
   
   list(AUC = AUC(mod_anom, train_anomaly),
        conf_matrix = mat,
-       data = anom_points,
        true_pos = mat[2, 2] / n_anom)
 }
 
@@ -50,16 +51,18 @@ stl_detection <- function(data) {
   ## Using seasonal-trend decomposition procedure based on LOESS or STL, we can 
   ## identify anomalies. This is done with help from the timetk package.
   
-  train_anomaly <- pull(data, anomaly)
+  train <- slice_tail(data, n = floor(.5 * nrow(data)))
+  
+  train_anomaly <- pull(train, anomaly)
   
   n_anom <- sum(train_anomaly)
   
-  mod_anomalies <- data |> 
+  mod_anomalies <- train |> 
     anomalize(timestamp, value) |> 
     mutate(anomaly_model = anomaly == "Yes") |>
     select(timestamp, anomaly_model)
   
-  anomaly_results <- data |> 
+  anomaly_results <- train |> 
     select(timestamp, value, anomaly) |> 
     left_join(mod_anomalies, by = join_by(timestamp))
   
