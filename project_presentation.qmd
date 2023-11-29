@@ -47,7 +47,7 @@ data |> ggplot(aes(x = timestamp, y = value)) +
 ## Methods 
 
 - Linear regression (leverage points)
-- Seasonal decomposition of time series by Loess (STL)
+- Seasonal decomposition of time series by Loess [STL](https://otexts.com/fpp2/stl.html)
 - Stochastic gradient descent (Neural Network)
 - Isolation Trees
 
