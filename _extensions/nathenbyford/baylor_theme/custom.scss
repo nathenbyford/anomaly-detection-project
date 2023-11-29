@@ -51,7 +51,7 @@ $gray70: #b3b3b3;
 /*-- scss:rules --*/
 
 #title-slide{
-  text-align: left;
+  text-align: center;
 }
 
 .quarto-title-authors {
@@ -69,9 +69,9 @@ $gray70: #b3b3b3;
   content: "";
   display: block;
 	border: none;
-	background-color: $baylor_green;
+	background-color: $university-gold;
 	color: #000;
-	height: 5px;
+	height: 1px;
 	width: 100%;
 }
 

@@ -1,5 +1,5 @@
 ---
-title: "Anomaly detection with Generative Adversarial Network models"
+title: "Anomaly detection with data driven approaches"
 author: "Nathen Byford"
 format: 
   baylor_theme-revealjs:
@@ -22,18 +22,18 @@ data <- read_csv("data/combined_data.csv")
 4. Results
 5. Discussion
 
+# Project Review
+
 ## Project motivation
 
-# Data
+- Anomalies in data are a common problem in 
 
 ## Data
-
----
 
 ```{r}
 data |> ggplot(aes(x = timestamp, y = value)) +
   geom_line(aes(color = company), alpha = .6) +
-  geom_point(data = filter(data, anomaly), shape = 23) +
+  geom_point(data = filter(data, anomaly), shape = 4) +
   facet_wrap(vars(company), scales = "free_y") +
   scale_color_viridis_d(option = "H") +
   labs(title = "Time plot of Twitter tags with anomalies",
@@ -46,6 +46,18 @@ data |> ggplot(aes(x = timestamp, y = value)) +
 
 ## Methods 
 
+- Linear regression (leverage points)
+- Seasonal decomposition of time series by Loess (STL)
+- Stochastic gradient descent (Neural Network)
+- Isolation Trees
+
+## Linear regression
+
+## STL
+
+## Neural Network
+
+## Isolation Trees
 
 ## Results {.smaller}
 
@@ -80,7 +92,10 @@ table: True positive rate
 |Fair-Cut Forest          |    0|    0|   0| 0.0|  0|    0|   0| 0.0|   0|   0|
 :::
 
-- 
-
 
 # Discussion
+
+## Conclusion
+
+
+# Thank you!
