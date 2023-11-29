@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Nathen Byford">
-  <title>Anomaly detection with Generative Adversarial Network models</title>
+  <title>Anomaly detection with data driven approaches</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -326,7 +326,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Anomaly detection with Generative Adversarial Network models</h1>
+  <h1 class="title">Anomaly detection with data driven approaches</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -347,17 +347,21 @@ Nathen Byford
 <li>Discussion</li>
 </ol>
 </section>
-<section id="project-motivation" class="slide level2">
-<h2>Project motivation</h2>
-</section>
 <section>
-<section id="data" class="title-slide slide level1 center">
-<h1>Data</h1>
+<section id="project-review" class="title-slide slide level1 center">
+<h1>Project Review</h1>
 
 </section>
-<section id="data-1" class="slide level2">
+<section id="project-motivation" class="slide level2">
+<h2>Project motivation</h2>
+<ul>
+<li>Anomalies in data are a common problem in</li>
+</ul>
+</section>
+<section id="data" class="slide level2">
 <h2>Data</h2>
-</section></section>
+
+<img data-src="project_presentation_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="methods" class="title-slide slide level1 center">
 <h1>Methods</h1>
@@ -365,116 +369,271 @@ Nathen Byford
 </section>
 <section id="methods-1" class="slide level2">
 <h2>Methods</h2>
+<ul>
+<li>Linear regression (leverage points)</li>
+<li>Seasonal decomposition of time series by Loess (STL)</li>
+<li>Stochastic gradient descent (Neural Network)</li>
+<li>Isolation Trees</li>
+</ul>
+</section>
+<section id="linear-regression" class="slide level2">
+<h2>Linear regression</h2>
+</section>
+<section id="stl" class="slide level2">
+<h2>STL</h2>
+</section>
+<section id="neural-network" class="slide level2">
+<h2>Neural Network</h2>
+</section>
+<section id="isolation-trees" class="slide level2">
+<h2>Isolation Trees</h2>
 </section>
 <section id="results" class="slide level2 smaller">
 <h2>Results</h2>
-<div class="def">
+<div class="tab">
 <table>
+<caption>AUC for models</caption>
 <colgroup>
-<col style="width: 10%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 21%">
-<col style="width: 31%">
-<col style="width: 20%">
+<col style="width: 26%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">company</th>
-<th style="text-align: right;">lm</th>
-<th style="text-align: right;">stl</th>
-<th style="text-align: right;">Isolation Forest</th>
-<th style="text-align: right;">Density Isolation Forest</th>
-<th style="text-align: right;">Fair-Cut Forest</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">AAPL</th>
+<th style="text-align: right;">AMZN</th>
+<th style="text-align: right;">CRM</th>
+<th style="text-align: right;">CVS</th>
+<th style="text-align: right;">FB</th>
+<th style="text-align: right;">GOOG</th>
+<th style="text-align: right;">IBM</th>
+<th style="text-align: right;">KO</th>
+<th style="text-align: right;">PFE</th>
+<th style="text-align: right;">UPS</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">AAPL</td>
-<td style="text-align: right;">0.9961</td>
-<td style="text-align: right;">0.9682</td>
-<td style="text-align: right;">0.9995</td>
-<td style="text-align: right;">0.9982</td>
-<td style="text-align: right;">0.9984</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">AMZN</td>
-<td style="text-align: right;">0.9921</td>
-<td style="text-align: right;">0.9938</td>
-<td style="text-align: right;">0.9993</td>
-<td style="text-align: right;">0.9994</td>
-<td style="text-align: right;">0.9985</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">CRM</td>
+<td style="text-align: left;">lm</td>
+<td style="text-align: right;">0.9962</td>
 <td style="text-align: right;">0.9888</td>
-<td style="text-align: right;">0.9903</td>
-<td style="text-align: right;">0.9987</td>
-<td style="text-align: right;">0.9976</td>
-<td style="text-align: right;">0.9957</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">CVS</td>
-<td style="text-align: right;">0.9881</td>
-<td style="text-align: right;">0.8839</td>
-<td style="text-align: right;">0.9996</td>
-<td style="text-align: right;">0.9987</td>
+<td style="text-align: right;">0.9814</td>
+<td style="text-align: right;">0.9899</td>
 <td style="text-align: right;">0.9945</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">FB</td>
-<td style="text-align: right;">0.9909</td>
-<td style="text-align: right;">0.9861</td>
-<td style="text-align: right;">0.9990</td>
-<td style="text-align: right;">0.9999</td>
-<td style="text-align: right;">0.9952</td>
+<td style="text-align: right;">0.4851</td>
+<td style="text-align: right;">0.9899</td>
+<td style="text-align: right;">0.9968</td>
+<td style="text-align: right;">0.9790</td>
+<td style="text-align: right;">0.4939</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">GOOG</td>
-<td style="text-align: right;">0.7372</td>
-<td style="text-align: right;">0.8634</td>
-<td style="text-align: right;">0.9442</td>
-<td style="text-align: right;">0.9773</td>
-<td style="text-align: right;">0.9724</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">IBM</td>
-<td style="text-align: right;">0.9896</td>
-<td style="text-align: right;">0.9913</td>
-<td style="text-align: right;">0.9990</td>
-<td style="text-align: right;">0.9995</td>
-<td style="text-align: right;">0.9983</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">KO</td>
-<td style="text-align: right;">0.9948</td>
-<td style="text-align: right;">0.9834</td>
-<td style="text-align: right;">0.9972</td>
-<td style="text-align: right;">0.9967</td>
-<td style="text-align: right;">0.9974</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">PFE</td>
-<td style="text-align: right;">0.9829</td>
+<td style="text-align: left;">stl</td>
+<td style="text-align: right;">0.9554</td>
+<td style="text-align: right;">0.9920</td>
+<td style="text-align: right;">0.9892</td>
+<td style="text-align: right;">0.8667</td>
 <td style="text-align: right;">0.9868</td>
+<td style="text-align: right;">0.4839</td>
+<td style="text-align: right;">0.9869</td>
+<td style="text-align: right;">0.9843</td>
+<td style="text-align: right;">0.9869</td>
+<td style="text-align: right;">0.4817</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SGD</td>
 <td style="text-align: right;">0.9994</td>
-<td style="text-align: right;">0.9987</td>
-<td style="text-align: right;">0.9938</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.7499</td>
+<td style="text-align: right;">0.9999</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.7500</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">UPS</td>
-<td style="text-align: right;">0.7898</td>
-<td style="text-align: right;">0.9772</td>
-<td style="text-align: right;">0.9822</td>
-<td style="text-align: right;">0.9795</td>
-<td style="text-align: right;">0.9828</td>
+<td style="text-align: left;">Isolation Forest</td>
+<td style="text-align: right;">0.9967</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.7497</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.4999</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.9991</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.4981</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Density Isolation Forest</td>
+<td style="text-align: right;">0.9665</td>
+<td style="text-align: right;">0.9859</td>
+<td style="text-align: right;">0.9713</td>
+<td style="text-align: right;">0.9611</td>
+<td style="text-align: right;">0.9905</td>
+<td style="text-align: right;">0.9736</td>
+<td style="text-align: right;">0.9746</td>
+<td style="text-align: right;">0.9912</td>
+<td style="text-align: right;">0.9758</td>
+<td style="text-align: right;">0.4888</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fair-Cut Forest</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="results-cont." class="slide level2 smaller">
+<h2>Results cont.</h2>
+<ul>
+<li>Another critical measure in this case is true positive rate</li>
+<li>Since there are so few anomalies in the data.</li>
+</ul>
+<div class="tab">
+<table style="width:100%;">
+<caption>True positive rate</caption>
+<colgroup>
+<col style="width: 37%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 4%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">AAPL</th>
+<th style="text-align: right;">AMZN</th>
+<th style="text-align: right;">CRM</th>
+<th style="text-align: right;">CVS</th>
+<th style="text-align: right;">FB</th>
+<th style="text-align: right;">GOOG</th>
+<th style="text-align: right;">IBM</th>
+<th style="text-align: right;">KO</th>
+<th style="text-align: right;">PFE</th>
+<th style="text-align: right;">UPS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">lm</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stl</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SGD</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Isolation Forest</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Density Isolation Forest</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fair-Cut Forest</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
 </tr>
 </tbody>
 </table>
 </div>
 </section></section>
+<section>
 <section id="discussion" class="title-slide slide level1 center">
 <h1>Discussion</h1>
+
+</section>
+<section id="conclusion" class="slide level2">
+<h2>Conclusion</h2>
+</section></section>
+<section id="thank-you" class="title-slide slide level1 center">
+<h1>Thank you!</h1>
 
 <img src="_extensions/nathenbyford/baylor_theme/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>Nathen Byford</p>
@@ -691,6 +850,44 @@ Nathen Byford
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
