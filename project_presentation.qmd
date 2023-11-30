@@ -26,7 +26,7 @@ data <- read_csv("data/combined_data.csv")
     + Faulty sensors
     + Bad data
     + Some outside actor
-- **Goal:** Use data-driven approaches to determine what variables are outliers in the Twitter anomaly data set.
+- **Goal:** Use data-driven approaches to determine what data points are anomalous in the Twitter anomaly data set.
 
 
 ## Data
@@ -47,7 +47,7 @@ data |> ggplot(aes(x = timestamp, y = value)) +
 
 ## Methods 
 
-- Picked 4 methods to compare: 
+- Comparing 4 methods of detection: 
     + Linear regression (leverage points)
     + Seasonal decomposition of time series by Loess (STL)
     + Stochastic gradient descent (Neural Network)
@@ -92,8 +92,8 @@ Red 'X' is the true anomaly value.
 ::::{.columns}
 :::{.column width=60%}
 - Post hoc method.
-- Common technique in time series analysis to find trends in the data.
-- Shows where the data are different from the trend and seasonal components being seen.
+- Common technique in time series analysis to identify trends in the data.
+- Utilize white noise/residuals to determine how far observations is from trend.
 :::
 
 :::{.column width=40%}
@@ -111,10 +111,12 @@ stl(co2, t.window = 12, s.window = "periodic") |>
 
 ## Neural Network
 
-- Split training and testing
+- Training and testing cross validation
 - Using a RNN for classification of the training data
     + One hidden layer (found to have best results from tuning)
-- Would be better to use an autoencoder[^1] method.
+- Uses nodes to determine outcome based on other nodes
+- Not optimized for time series data
+- Would be better to use an autoencoder[^1] method
 
 [^1]: Like a GAN model, specifically TimeGAN or anoGAN.
 
@@ -128,6 +130,17 @@ stl(co2, t.window = 12, s.window = "periodic") |>
     + anomalies will/should require less splits
     + Anomaly score is the average number of splits to isolate a point across all trees
 
+---
+
+### Isolation Forest visual Aid
+
+::: {.center}
+![](Isolating_an_Anomalous_Point.png)
+:::
+
+- Point $\text{x}_j$ has isolation depth of 4 in this case
+- Repeat process for ensemble of trees and average depth
+
 ## Isolation Forest Types
 
 - Isolation Forest
@@ -135,6 +148,7 @@ stl(co2, t.window = 12, s.window = "periodic") |>
 - Density Isolation Forest
     + Changes the scoring method to density based on the ratio of the characteristics on each side of split.
     + Tends to be better for categorical variables.
+    
 
 # Results 
 
