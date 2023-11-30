@@ -2,13 +2,16 @@
 ## Functions for anomaly detection
 
 
-lm_inf_detection <- function(data) {
+lm_inf_detection <- function(data, cv = TRUE) {
   ## Using a linear model of time and values we are able to identify anomalous values
   ## from the influence points. This model takes into account if the given point has
   ## influence from on or all of the measures Cook's distance, Covariance ratio*, dffit*,
   ## df betas, and/or hat values.
-  
-  train <- slice_tail(data, n = floor(.5 * nrow(data)))
+  if (cv) {
+    train <- slice_tail(data, n = floor(.5 * nrow(data)))
+  } else {
+    train <- data
+  }
   
   train_anomaly <- pull(train, anomaly)
   
@@ -21,7 +24,7 @@ lm_inf_detection <- function(data) {
   anom_ind <- inf_point |> 
     mutate(n = 1:nrow(inf_point)) |> 
     pivot_longer(-n) |> 
-    group_by(n) |> 
+    group_by(n) |>
     reframe(n_inf = sum(value)) |> 
     filter(n_inf > 0) |> 
     pull(n)
@@ -42,6 +45,7 @@ lm_inf_detection <- function(data) {
   mat <- table(mod_anom, train_anomaly)
   
   list(AUC = AUC(mod_anom, train_anomaly),
+       data = anom_points,
        conf_matrix = mat,
        true_pos = mat[2, 2] / n_anom)
 }
@@ -112,7 +116,7 @@ iso_forest_detection <- function(data) {
   
   model_fcf <- isolation.forest(
     data_without_anomaly,
-    ndim=1, sample_size=32,
+    ndim=1, sample_size=256,
     prob_pick_pooled_gain=1,
     ntrees=100,
     missing_action="fail"
@@ -143,17 +147,23 @@ iso_forest_detection <- function(data) {
 }
 
 nn_detection <- function(data) {
-  train <- data |> slice_head(n = ceiling(.5 * nrow(apple)))
+  train <- data |> slice_head(n = ceiling(.5 * nrow(data)))
   n_train_anom <- sum(pull(train, anomaly))
   
-  test <- data |> slice_tail(n = floor(.5 * nrow(apple)))
+  test <- data |> slice_tail(n = floor(.5 * nrow(data)))
   n_test_anom <- sum(pull(test, anomaly))
   
   train_anomaly <- train |> pull(anomaly)
   data_without_anomaly <- select(train, -c(anomaly, company)) |> 
     mutate(timestamp = as.numeric(timestamp))
   
+  normal_train <- train |> filter(!anomaly) |> 
+    select(-c(anomaly, company)) |> 
+    mutate(timestamp = as.numeric(timestamp))
+  
   nn_mod <- neuralnetwork(data_without_anomaly, train_anomaly, hidden.layers = 1)
+  
+  # ae <- autoencoder(normal_train, hidden.layers = NA)
   
   test_without_anomaly <- select(test, -c(anomaly, company)) |> 
     mutate(timestamp = as.numeric(timestamp))

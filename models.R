@@ -6,6 +6,9 @@ library("timetk")
 library("isotree")
 library("MLmetrics")
 library("ANN2")
+# library("keras")
+# library("tensorflow")
+# use_condaenv("keras-tf", required = T)
 
 source("functions.R")
 
@@ -14,6 +17,24 @@ data <- read_csv("data/combined_data.csv")
 glimpse(data)
 
 names <- as.character(unique(data$company))
+
+train <- slice_head(data, n = floor(.5 * nrow(data)))
+
+# args <- expand_grid(names, method = c("dfb.1_", "dfb.tmst", "dffit", "cov.r", "cook.d", "hat"))
+# names_2 <- args |> pull(names)
+# methods_2 <- args |> pull(method)
+# 
+# lm_mod_training <- map2(
+#   names_2, methods_2,
+#   function(x, y) {
+#     results <- lm_inf_detection(filter(train, company == x), cv = FALSE, y)
+#     tibble(
+#       company = x,
+#       measure = y,
+#       auc = results$AUC
+#     )
+#   }
+# )
 
 lm_results <- map_dfr(names,
   \(X) {
@@ -123,3 +144,4 @@ rbind(
   isoForest_tp
 ) |> 
   knitr::kable(digits = 4)
+
