@@ -367,7 +367,7 @@ Nathen Byford
 <li>Bad data</li>
 <li>Some outside actor</li>
 </ul></li>
-<li><strong>Goal:</strong> Use data-driven approaches to determine what variables are outliers in the Twitter anomaly data set.</li>
+<li><strong>Goal:</strong> Use data-driven approaches to determine what data points are anomalous in the Twitter anomaly data set.</li>
 </ul>
 </section>
 <section id="data" class="slide level2">
@@ -382,7 +382,7 @@ Nathen Byford
 <section id="methods-1" class="slide level2">
 <h2>Methods</h2>
 <ul>
-<li>Picked 4 methods to compare:
+<li>Comparing 4 methods of detection:
 <ul>
 <li>Linear regression (leverage points)</li>
 <li>Seasonal decomposition of time series by Loess (STL)</li>
@@ -420,8 +420,8 @@ Red ‘X’ is the true anomaly value.</p>
 <div class="column" style="width:60%;">
 <ul>
 <li>Post hoc method.</li>
-<li>Common technique in time series analysis to find trends in the data.</li>
-<li>Shows where the data are different from the trend and seasonal components being seen.</li>
+<li>Common technique in time series analysis to identify trends in the data.</li>
+<li>Utilize white noise/residuals to determine how far observations is from trend.</li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="cell">
@@ -439,12 +439,14 @@ Red ‘X’ is the true anomaly value.</p>
 <section id="neural-network" class="slide level2">
 <h2>Neural Network</h2>
 <ul>
-<li>Split training and testing</li>
+<li>Training and testing cross validation</li>
 <li>Using a RNN for classification of the training data
 <ul>
 <li>One hidden layer (found to have best results from tuning)</li>
 </ul></li>
-<li>Would be better to use an autoencoder<sup>1</sup> method.</li>
+<li>Uses nodes to determine outcome based on other nodes</li>
+<li>Not optimized for time series data</li>
+<li>Would be better to use an autoencoder<sup>1</sup> method</li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Like a GAN model, specifically TimeGAN or anoGAN.</p></li></ol></aside></section>
 <section id="isolation-forest" class="slide level2">
@@ -459,6 +461,17 @@ Red ‘X’ is the true anomaly value.</p>
 <li>anomalies will/should require less splits</li>
 <li>Anomaly score is the average number of splits to isolate a point across all trees</li>
 </ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="isolation-forest-visual-aid">Isolation Forest visual Aid</h3>
+<div class="center">
+<p><img data-src="Isolating_an_Anomalous_Point.png"></p>
+</div>
+<ul>
+<li>Point <span class="math inline">\(\text{x}_j\)</span> has isolation depth of 4 in this case</li>
+<li>Repeat process for ensemble of trees and average depth</li>
 </ul>
 </section>
 <section id="isolation-forest-types" class="slide level2">
