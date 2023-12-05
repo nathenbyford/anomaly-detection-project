@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.27)  4 DEC 2023 14:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.27)  5 DEC 2023 11:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -213,27 +213,49 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
  (c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+) (./main.toc)
+\tf@toc=\write3
+\openout3 = `main.toc'.
 
-{c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./main.aux)
+ [1
+
+{c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<linear_model.png, id=11, 602.25pt x 376.40625pt>
+File: linear_model.png Graphic file (type png)
+<use linear_model.png>
+Package pdftex.def Info: linear_model.png  used on input line 36.
+(pdftex.def)             Requested size: 328.82707pt x 205.52501pt.
+ [2 <./linear_model.png>]
+<stl_model.png, id=16, 602.25pt x 451.6875pt>
+File: stl_model.png Graphic file (type png)
+<use stl_model.png>
+Package pdftex.def Info: stl_model.png  used on input line 50.
+(pdftex.def)             Requested size: 328.82707pt x 246.63002pt.
+ [3 <./stl_model.png>]
+<../Isolating_an_Anomalous_Point.png, id=22, 604.2575pt x 401.5pt>
+File: ../Isolating_an_Anomalous_Point.png Graphic file (type png)
+<use ../Isolating_an_Anomalous_Point.png>
+Package pdftex.def Info: ../Isolating_an_Anomalous_Point.png  used on input line 65.
+(pdftex.def)             Requested size: 328.82707pt x 218.49152pt.
+ [4 <../Isolating_an_Anomalous_Point.png>] (./main.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-10-23>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 2490 strings out of 476364
- 39821 string characters out of 5797444
- 1924036 words of memory out of 5000000
- 24297 multiletter control sequences out of 15000+600000
- 565782 words of font info for 64 fonts, out of 8000000 for 9000
+ 2554 strings out of 476364
+ 40922 string characters out of 5797444
+ 1931036 words of memory out of 5000000
+ 24348 multiletter control sequences out of 15000+600000
+ 571011 words of font info for 84 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,6n,65p,277b,220s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on main.pdf (1 page, 30972 bytes).
+ 57i,6n,65p,853b,235s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (4 pages, 137637 bytes).
 PDF statistics:
- 23 PDF objects out of 1000 (max. 8388607)
- 13 compressed objects within 1 object stream
+ 54 PDF objects out of 1000 (max. 8388607)
+ 29 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
