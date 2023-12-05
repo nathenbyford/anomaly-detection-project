@@ -1,5 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1701753659 "c:/Users/nathe/Documents/Git/anomaly_detection_project/final_report/methods.tex" "methods.pdf" "methods" 1701753660 0
+["pdflatex"] 1701796092 "c:/Users/nathe/Documents/Git/anomaly_detection_project/final_report/methods.tex" "methods.pdf" "methods" 1701796093 0
+  "../Isolating_an_Anomalous_Point.png" 1701356193 41050 839a079b1460a1fe41bd1d03ed885bc8 ""
   "C:/Users/nathe/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1700929702 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/nathe/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1698192912 24141950 d16839b4096bc98562cf8115e2da7fc9 ""
   "C:/Users/nathe/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1233951848 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -60,9 +61,9 @@
   "C:/Users/nathe/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty" 1665067579 4023 293ea1c16429fc0c4cf605f4da1791a9 ""
   "C:/Users/nathe/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1681896761 29940 9473d58112bc8a88f5505b823a053dde ""
   "C:/Users/nathe/AppData/Local/Programs/MiKTeX/tex/latex/tools/bm.sty" 1686255640 13231 df28b16cc1506f657b947b66cabad463 ""
-  "c:/Users/nathe/Documents/Git/anomaly_detection_project/final_report/methods.tex" 1701753659 3584 e89e673377265add82d5fe0c479e4fcd ""
+  "c:/Users/nathe/Documents/Git/anomaly_detection_project/final_report/methods.tex" 1701796092 5549 aea5ef9b7725f29193aaad703b478bd2 ""
   "linear_model.png" 1701748654 9439 bec46cb3cad36d51fa1163e06cc270b5 ""
-  "methods.aux" 1701753660 935 d97d9055a9347194e06e2f1d0cfe54e6 "pdflatex"
+  "methods.aux" 1701796093 1119 66b20152b4b32e5ec9d5f913f3425135 "pdflatex"
   "stl_model.png" 1701753170 9826 289c699798ab261e8a690bdc11cb627e ""
   (generated)
   "methods.aux"
