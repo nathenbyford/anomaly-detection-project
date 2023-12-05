@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,bm,graphicx}
+
+\allowdisplaybreaks
+
+\title{Methods section of final report}
+\author{Nathen Byford}
+\date{}
+
+\begin{document}
+\maketitle
+
+The goal of this project is to identify anomalous data points in the twitter tag data utilizing data driven methods, specifically isolation trees.
+
+\section{Methods}
+In this report we will compare the performance of four classes of anomaly detection algorithms. These classes are: linear regression, seasonal decomposition of time series by Loess, neural network, and isolation forest. Some of these models are post hoc and intended to be performed after the data is collected, others can be trained, and then the new data can be input into the model for decision-making. All models will be trained on the first half of the time series if necessary and all test measures are from the second half of the time series.
+
+\subsection{Linear regression model}
+Anomalies are similar to outliers, points that are not expected and further from the other data points. It's possible to use a common method of outlier detection with the leverage calculations for a simple linear regression. For the time series in this study the x variable is date/time and the y variable is the number of twitter tags. Then calculating the leverage measures of cooks distance, covariance ratio, and DF beta if a point has high leverage for any of these measures it's considered an anomaly. 
+
+In figure \ref{fig:lm_fig} the model is shown, the blue line is the simple linear regression, the green points are identified outliers using this method, and the red x is a true anomaly from the data set.
+
+\begin{figure}[hb]
+    \centering
+    \includegraphics[width=0.7\textwidth]{linear_model.png}
+    \caption{Example linear model}
+    \label{fig:lm_fig}
+\end{figure}
+
+Thinking about this model, the linear regression slope and intercept are not of interest. This is counterintuitive from the typical construction of a linear regression model, here the primary interest is what data points are leverage points. So there will not be any mention of the coefficients of the model here, only mention of the anomalies identified and the AUC value.
+
+\subsection{Seasonal decomposition of time series by Loess (STL)}
+A common method of anomaly detection with time series data is to utilize the seasonal decomposition of time series by Loess or STL. The STL is as its name suggests a decomposition of the time series by its trend component, seasonal component, and some residual remainder. This can be seen in figure \ref{fig:stl_fig}. For anomaly detection we can place a bond on the remainder portion of the STL and determine that any remainder outside the these bounds is an anomaly. This would be an indication that the values observed are further than expected from the seasonal plus trend components of the time series.
+
+Similar to the linear regression model, the STL model is post hoc and needs the full data, as the classification comes as a byproduct of the model fit to the complete data. The coefficients of the seasonal and trend portions are not if interested. The package that contains the function in R for STL anomaly detection is \texttt{timetk}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.7\textwidth]{stl_model.png}
+    \caption{Example plot of STL}
+    \label{fig:stl_fig}
+\end{figure}
+
+
+\subsection{Stochastic gradient descent}
+
+
+
+\subsection{Isolation forest}
+
+
+
+\end{document}
