@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1701798657 "c:/Users/nathen_byford1/Documents/Git/anomaly-detection-project/final_report/main.tex" "main.pdf" "main" 1701798657 0
+["pdflatex"] 1701804206 "c:/Users/nathen_byford1/Documents/Git/anomaly-detection-project/final_report/main.tex" "main.pdf" "main" 1701804207 0
   "../Isolating_an_Anomalous_Point.png" 1701720163 41050 de58bc19d1c563b12f8e73d985926cc5 ""
   "c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1694458854 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1694458854 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -80,11 +80,11 @@
   "c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1698420279 94265 e8c8a8b3dc020a53bdcdd99dd785e519 ""
   "c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1698420284 6798792 f7e984ff148f43a5481bf6208abb8e59 ""
   "c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf.cnf" 1694458869 990 590cd84018271300ee56b28d1c622c8e ""
-  "c:/Users/nathen_byford1/Documents/Git/anomaly-detection-project/final_report/main.tex" 1701798656 7230 fcc77d1981f3d1931ce85e9dba638a80 ""
+  "c:/Users/nathen_byford1/Documents/Git/anomaly-detection-project/final_report/main.tex" 1701804206 8434 3ad53c8c903971d466c18eec3202d4fb ""
   "linear_model.png" 1701797575 9439 95e56d1886d6aa65dcd92857cc4d9916 ""
-  "main.Tex" 1701798656 7230 fcc77d1981f3d1931ce85e9dba638a80 ""
-  "main.aux" 1701798657 1636 66084b2c0a87409a650361e743e8d854 "pdflatex"
-  "main.toc" 1701798657 604 8d67e8c246b0bffdf623c619a9f4f470 "pdflatex"
+  "main.Tex" 1701804206 8434 3ad53c8c903971d466c18eec3202d4fb ""
+  "main.aux" 1701804207 1828 004f445eca9634e333aff7d2747d0367 "pdflatex"
+  "main.toc" 1701804207 604 8d67e8c246b0bffdf623c619a9f4f470 "pdflatex"
   "stl_model.png" 1701797575 9826 79717a891a576cbbe1d8b3e73579b92a ""
   (generated)
   "main.aux"
