@@ -70,6 +70,27 @@ The last method is isolation forests, this method is similar to random forest an
 \section{Results}
 
 
+\begin{table}[ht]
+    \centering
+    \caption{AUC results of each model}
+    \small
+    \begin{tabular}{l|r|r|r|r|r|r|r|r|r|r}
+        \hline
+        Model & AAPL & AMZN & CRM & CVS & FB & GOOG & IBM & KO & PFE & UPS\\
+        \hline
+        lm & 0.9962 & 0.9888 & 0.9814 & \textbf{0.9899} & 0.9945 & 0.4851 & \textbf{0.9899} & 0.9968 & 0.9790 & 0.4939\\
+        \hline
+        stl & 0.9554 & \textbf{0.9920} & \textbf{0.9892} & 0.8667 & 0.9868 & 0.4839 & 0.9869 & 0.9843 & \textbf{0.9869} & 0.4817\\
+        \hline
+        SGD & \textbf{0.9994} & 0.5000 & 0.5000 & 0.5000 & \textbf{0.9999} & 0.5000 & 0.5000 & 0.5000 & 0.5000 & \textbf{0.5000}\\
+        \hline
+        IF & 0.9967 & 0.5000 & 0.5000 & 0.7497 & 0.5000 & 0.4999 & 0.5000 & \textbf{0.9991} & 0.5000 & 0.4981\\
+        \hline
+        Density IF & 0.9665 & 0.9859 & 0.9713 & 0.9611 & 0.9905 & \textbf{0.9736} & 0.9746 & 0.9912 & 0.9758 & 0.4888\\
+        \hline
+    \end{tabular}
+\end{table}
+
 \section{Conclusion}
 
 \end{document}
