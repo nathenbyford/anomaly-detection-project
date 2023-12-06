@@ -115,6 +115,11 @@ INPUT c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/publi
 OUTPUT main.toc
 OUTPUT main.pdf
 INPUT c:/Users/nathen_byford1/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT ./data_plot.png
+INPUT ./data_plot.png
+INPUT ./data_plot.png
+INPUT ./data_plot.png
+INPUT ./data_plot.png
 INPUT ./linear_model.png
 INPUT ./linear_model.png
 INPUT ./linear_model.png

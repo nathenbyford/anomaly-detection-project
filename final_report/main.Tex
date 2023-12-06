@@ -22,6 +22,16 @@ In data analysis one of the most prevalent issues among all areas of data collec
 There are many possible causes for anomalies in data. Possible causes are: faulty sensors, poor data quality, external actors, and others. Identifying anomalies is the first step to identifying the cause of the anomaly. Knowing the cause of the anomaly can help determine if the anomalies should be included in the analysis of the data and the decision-making process.
 
 \subsection{Data}
+The data comes from the Numenta Anomaly Benchmark data set, specifically the twitter tag part of the data set. This part of the data has 158,631 observations of twitter tag counts every 5 minutes from Feb. 26, 2015 to Apr. 23, 2015 at 5 minute increments. These observations are split between 10 companies, Apple, Amazon, Salesforce, CVS, Facebook/Meta, Google, IBM, Coca-cola, Phizer, and UPS. With each observation there is a logical assigned, true or false if it is an anomaly.
+
+In figure \ref{fig:data} we can see the time series of each company with the identified anomalies overlaid as Xs. Looking at the time series' in figure \ref*{fig:data} it is clear that there is an imbalance problem in the data, there are far more non-anomalous points compared to the number of anomalous points. This leads to the possibility of the models performing extremely well by determining that all points are normal. In anomaly detection there is often a high false positive rate due to the nature of anomaly detection  being related to outlier detection. Because of the imbalance of the data the measure of model performance will be the AUC and the true positive rate, because it's important that the model does identify the anomalies since there are so few.
+
+\begin{figure}[hb]
+    \centering
+    \includegraphics[width=.7\textwidth]{data_plot.png}
+    \caption{Plot of each company time series}
+    \label{fig:data}
+\end{figure}
 
 \section{Methods}
 In this report we will compare the performance of four classes of anomaly detection algorithms. These classes are: linear regression, seasonal decomposition of time series by Loess, neural network, and isolation forest. Some of these models are post hoc and intended to be performed after the data is collected, others can be trained, and then the new data can be input into the model for decision-making. All models will be trained on the first half of the time series if necessary and all test measures are from the second half of the time series.
