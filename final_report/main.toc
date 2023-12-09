@@ -1,12 +1,12 @@
-\contentsline {section}{\numberline {1}Introduction}{2}{}%
-\contentsline {section}{\numberline {2}Data}{2}{}%
-\contentsline {subsection}{\numberline {2.1}Exploritory Data Analysis}{2}{}%
-\contentsline {section}{\numberline {3}Methods}{3}{}%
-\contentsline {subsection}{\numberline {3.1}Statistical models}{3}{}%
-\contentsline {subsubsection}{\numberline {3.1.1}Linear regression model}{3}{}%
-\contentsline {subsubsection}{\numberline {3.1.2}Seasonal decomposition of time series by Loess (STL)}{4}{}%
-\contentsline {subsection}{\numberline {3.2}Machine Learning methods}{5}{}%
-\contentsline {subsubsection}{\numberline {3.2.1}Artificial neural network}{5}{}%
-\contentsline {subsubsection}{\numberline {3.2.2}Isolation forest}{5}{}%
+\contentsline {section}{\numberline {1}Introduction}{3}{}%
+\contentsline {section}{\numberline {2}Data}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Exploratory Data Analysis}{3}{}%
+\contentsline {section}{\numberline {3}Methods}{4}{}%
+\contentsline {subsection}{\numberline {3.1}Statistical Models}{4}{}%
+\contentsline {subsubsection}{\numberline {3.1.1}Linear Regression Model}{4}{}%
+\contentsline {subsubsection}{\numberline {3.1.2}Seasonal Decomposition of Time Series by Loess (STL)}{5}{}%
+\contentsline {subsection}{\numberline {3.2}Machine Learning Methods}{5}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Artificial Neural Network}{5}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Isolation Forest}{6}{}%
 \contentsline {section}{\numberline {4}Results}{6}{}%
 \contentsline {section}{\numberline {5}Conclusion}{7}{}%
